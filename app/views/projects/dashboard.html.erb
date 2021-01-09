@@ -1,0 +1,63 @@
+<!-- <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %> -->
+
+<h1>Nuevo Proyecto</h1>
+<form action="<%= projects_create_path %>">
+    Nombre del proyecto: <input name="name" type="text"><br>
+    Descripcion: <textarea name="description" id="" cols="30" rows="10"></textarea><br>
+    Fecha de comienzo: <input name="started" type="date" value="<%= '08/01/2021' %>"><br>
+    Fecha de termino: <input name="finished" type="date"><br>
+    Estado: <select name="state"><br>
+        <option value="propuesta">Propuesta</option>
+        <option value="en progreso">En progreso</option>
+        <option value="terminado">Terminado</option>
+    </select><br>
+
+    <input type="submit" value="Guardar">
+
+</form>
+
+<h2>Gestor de Proyectos</h2>
+<form action="">
+    <select name="state"><br>
+        <option value="">Todos</option>
+        <option value="propuesta">Propuesta</option>
+        <option value="en progreso">En progreso</option>
+        <option value="terminado">Terminado</option>
+    </select><br>
+    <input type="submit" value="Buscar">
+</form>
+
+<table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Fecha de comienzo</th>
+        <th>Fecha de termino</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <td><%= project.name %></td>
+          <td><%= project.description %></td>
+          <td><%= project.started %></td>
+          <td><%= project.finished %></td>
+          <td><%= project.state %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
